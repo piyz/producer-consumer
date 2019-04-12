@@ -1,27 +1,11 @@
 package by.matrosov.appl;
 
-import by.matrosov.appl.threads.ConsumerThread;
-import by.matrosov.appl.threads.ProducerThread;
-
 import java.util.LinkedList;
 
 public class ProducerConsumerImpl implements ProducerConsumer{
 
-    private static LinkedList<Integer> list = new LinkedList<>();
-    private static final int capacity = 3;
-
-    public static void main(String[] args) throws InterruptedException {
-        ProducerConsumerImpl pc = new ProducerConsumerImpl();
-
-        ConsumerThread consumerThread = new ConsumerThread(pc);
-        ProducerThread producerThread = new ProducerThread(pc);
-
-        consumerThread.start();
-        producerThread.start();
-
-        consumerThread.join();
-        producerThread.join();
-    }
+    private LinkedList<Integer> list = new LinkedList<>();
+    private final int capacity = 3;
 
     @Override
     public void consume() throws InterruptedException {
